@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 Publicidad - Soluciones Creativas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs/lib/anime.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="antialiased">
+    <!-- Header -->
+    <header
+        class="fixed w-full z-50 bg-[#0F2435]/[0.94] backdrop-blur-sm py-4 px-6 lg:px-12 transition-all duration-300">
+        <div class="flex justify-between items-center max-w-7xl mx-auto">
+            <div class="flex items-center">
+                <span class="text-2xl font-bold text-white">360</span>
+                <span class="text-2xl font-bold text-[#46C5C8]">Publicidad</span>
+            </div>
+            <button id="menu-toggle" class="p-2 focus:outline-none" aria-label="Toggle menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+                <i data-feather="menu" class="text-[#46C5C8] w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="fixed inset-0 z-40 hidden menu-overlay transition-all duration-300 ease-in-out">
+        <div
+            class="absolute right-0 h-full w-full md:w-[400px] bg-[#0F2435] bg-opacity-70 backdrop-blur-md p-8 transform translate-x-full transition-transform duration-300">
+            <div class="flex justify-between items-center mb-12 mt-12">
+                <span class="text-2xl font-bold text-white">360</span>
+                <span class="text-2xl font-bold text-[#46C5C8]">Publicidad</span>
+                <button id="menu-close" class="p-2 focus:outline-none">
+                    <i data-feather="x" class="text-[#46C5C8] w-6 h-6"></i>
+                </button>
+            </div>
+            <nav>
+                <ul class="space-y-6">
+                    <li class="nav-item group">
+                        <a href="#about"
+                            class="flex items-center text-l font-medium text-[#AFC1CD] hover:text-white transition-colors duration-200">
+                            <span
+                                class="chip mr-4 bg-[#0F2435] text-[#46C5C8] border border-[#46C5C8] rounded-full w-10 h-10 flex items-center justify-center">01</span>
+                            Quiénes Somos
+                        </a>
+                    </li>
+                    <li class="nav-item group">
+                        <a href="#services"
+                            class="flex items-center text-l font-medium text-[#AFC1CD] hover:text-white transition-colors duration-200">
+                            <span
+                                class="chip mr-4 bg-[#0F2435] text-[#46C5C8] border border-[#46C5C8] rounded-full w-10 h-10 flex items-center justify-center">02</span>
+                            Lo que Hacemos
+                        </a>
+                    </li>
+                    <li class="nav-item group">
+                        <a href="#design"
+                            class="flex items-center text-l font-medium text-[#AFC1CD] hover:text-white transition-colors duration-200">
+                            <span
+                                class="chip mr-4 bg-[#0F2435] text-[#46C5C8] border border-[#46C5C8] rounded-full w-10 h-10 flex items-center justify-center">03</span>
+                            Diseño Gráfico
+                        </a>
+                    </li>
+                    <li class="nav-item group">
+                        <a href="#portfolio"
+                            class="flex items-center text-l font-medium text-[#AFC1CD] hover:text-white transition-colors duration-200">
+                            <span
+                                class="chip mr-4 bg-[#0F2435] text-[#46C5C8] border border-[#46C5C8] rounded-full w-10 h-10 flex items-center justify-center">04</span>
+                            Portafolio de Productos
+                        </a>
+                    </li>
+                    <li class="nav-item group">
+                        <a href="#contact"
+                            class="flex items-center text-l font-medium text-[#AFC1CD] hover:text-white transition-colors duration-200">
+                            <span
+                                class="chip mr-4 bg-[#0F2435] text-[#46C5C8] border border-[#46C5C8] rounded-full w-10 h-10 flex items-center justify-center">05</span>
+                            Contáctanos
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="h-screen flex items-center justify-center px-6 relative overflow-hidden">
+
+
+        <div class="relative z-10 max-w-6xl mx-auto w-full mt-6">
+            <div class="flex justify-center mb-6">
+                <span class="section-title inline-flex items-center text-lg font-semibold tracking-wider">
+                    BRANDING
+                </span>
+            </div>
+
+            <!-- Swiper Carrusel -->
+            <div class="swiper hero-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slide 1 -->
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video1.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video 2.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video3.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <!-- Slide 2 -->
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video4.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <!-- Slide 3 -->
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video5.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="slide-card">
+                            <video src="media/video6.mp4" autoplay muted loop playsinline></video>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Flechas -->
+                <div class="swiper-button-next text-[#46C5C8]"></div>
+                <div class="swiper-button-prev text-[#46C5C8]"></div>
+            </div>
+        </div>
+
+        <!-- Divider con pico -->
+        <svg class="absolute bottom-0 left-0 w-full h-32 z-10" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path d="M0,40 L50,100 L100,40 L100,100 L0,100 Z" fill="#ffffff" />
+        </svg>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 bg-white text-[#0F2435]">
+        <div class="max-w-7xl mx-auto" data-aos="fade-up">
+            <h2 class="section-title text-3xl font-bold mb-12">Quiénes Somos</h2>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <p class="text-lg mb-6">En 360 Publicidad llevamos más de 15 años transformando ideas en
+                        experiencias visuales impactantes. Somos especialistas en comunicación visual integral para
+                        empresas que buscan destacar.</p>
+                    <p class="text-lg mb-8">Nuestro equipo multidisciplinario combina creatividad, tecnología y
+                        estrategia para ofrecer soluciones personalizadas que generan resultados medibles.</p>
+
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="text-[#46C5C8] w-5 h-5 mr-3 mt-1"></i>
+                            <span class="text-lg">Enfoque centrado en el cliente</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="text-[#46C5C8] w-5 h-5 mr-3 mt-1"></i>
+                            <span class="text-lg">Calidad certificada en materiales</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="check-circle" class="text-[#46C5C8] w-5 h-5 mr-3 mt-1"></i>
+                            <span class="text-lg">Tecnología de última generación</span>
+                        </li>
+                    </ul>
+
+                    <!-- <a href="#" class="inline-flex items-center px-6 py-3 border border-[#46C5C8] rounded-xl text-[#46C5C8] font-medium hover:bg-[#46C5C8] hover:bg-opacity-10 transition-colors duration-200">
+                        Ver más sobre nosotros
+                    </a> -->
+                </div>
+
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-100 rounded-2xl overflow-hidden h-full min-h-[400px]">
+                        <!-- Placeholder for image/video -->
+                        <div
+                            class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#0F2435] to-[#46C5C8]">
+                            <i data-feather="image" class="w-20 h-20 text-white opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 px-6 bg-[#0F2435]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-12 text-white">Lo que Hacemos</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="pen-tool" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Diseño Gráfico</h3>
+                    <p class="text-[#0F2435]">Creación de identidad visual, material promocional y estrategias de
+                        comunicación coherentes con tu marca.</p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="printer" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Impresión Digital</h3>
+                    <p class="text-[#0F2435]">Tecnología de impresión de alta calidad para todo tipo de soportes y
+                        formatos.</p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="box" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Señalización</h3>
+                    <p class="text-[#0F2435]">Sistemas de señalética interior y exterior para mejorar la experiencia de
+                        usuario.</p>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="shopping-bag" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Retail POP</h3>
+                    <p class="text-[#0F2435]">Soluciones para punto de venta que incrementan la visibilidad y
+                        conversión.</p>
+                </div>
+
+                <!-- Service 5 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="monitor" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Publicidad Exterior</h3>
+                    <p class="text-[#0F2435]">Vallas, espectaculares y medios alternativos para maximizar impacto
+                        geográfico.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="card-hover bg-[#46C5C8] rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2">
+                    <i data-feather="award" class="w-10 h-10 text-[#0F2435] mb-6"></i>
+                    <h3 class="text-xl font-bold text-[#0F2435] mb-4">Branding Corporativo</h3>
+                    <p class="text-[#0F2435]">Desarrollo de marcas sólidas con estrategias de posicionamiento a largo
+                        plazo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Design Section -->
+    <section id="design" class="py-24 px-6 bg-white text-[#0F2435]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-12">Diseño Gráfico</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                <!-- Feature 1 -->
+                <div class="flex items-start">
+                    <i data-feather="layers" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Identidad Visual</h3>
+                        <p class="text-[#0F2435]">Logotipos, manuales de marca y sistemas visuales coherentes.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="flex items-start">
+                    <i data-feather="file-text" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Papelería Corporativa</h3>
+                        <p class="text-[#0F2435]">Tarjetas, sobres, carpetas y material de oficina profesional.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex items-start">
+                    <i data-feather="book-open" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Editorial</h3>
+                        <p class="text-[#0F2435]">Catálogos, revistas, folletos y material impreso de alta calidad.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex items-start">
+                    <i data-feather="smartphone" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Digital</h3>
+                        <p class="text-[#0F2435]">Diseño para redes sociales, banners web y material digital.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 5 -->
+                <div class="flex items-start">
+                    <i data-feather="package" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Packaging</h3>
+                        <p class="text-[#0F2435]">Diseño de empaques que destacan en el punto de venta.</p>
+                    </div>
+                </div>
+
+                <!-- Feature 6 -->
+                <div class="flex items-start">
+                    <i data-feather="map" class="text-[#46C5C8] w-8 h-8 mr-4 mt-1"></i>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Infografías</h3>
+                        <p class="text-[#0F2435]">Visualización de datos complejos de forma clara y atractiva.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Banner -->
+            <div class="bg-[#46C5C8] rounded-2xl p-8 md:p-12 text-center">
+                <h3 class="text-2xl font-bold text-[#0F2435] mb-4">¿Listo para transformar tu marca?</h3>
+                <p class="text-[#0F2435] mb-6 max-w-2xl mx-auto">Nuestro equipo de diseñadores está listo para crear
+                    soluciones visuales que impulsen tu negocio.</p>
+                <a href="#contact"
+                    class="inline-flex items-center px-8 py-3 bg-[#0F2435] text-white rounded-xl font-medium hover:bg-opacity-90 transition-colors duration-200">
+                    Solicitar propuesta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 px-6 bg-[#0F2435]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-12 text-white">Portafolio de Productos</h2>
+
+            <!-- Filters -->
+            <div class="flex flex-wrap gap-3 mb-12">
+                <button class="px-4 py-2 bg-[#46C5C8] text-[#0F2435] rounded-full font-medium">Todos</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Avisos</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Neón</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Señalización</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Vinilos</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">POP</button>
+                <button
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Papelería</button>
+            </div>
+
+            <!-- Gallery -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Item 1 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-luminosos-acrilico.png" alt="Aviso luminoso en acríclico"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Aviso luminoso en acrilico</h3>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-luminosos-acrilico (2).png" alt="Aviso luminoso en acrílico"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Aviso luminoso en acrilico</h3>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico.png" alt="Aviso en acrilico"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Aviso en acrilico</h3>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Aviso en acrílico"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Aviso en acrilico</h3>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="vinilos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/vinilo-decorativo.png" alt="Vinilo decorativo"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Vinilo decorativo</h3>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="vinilos">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/vinilo-decorativo (2).png" alt="Vinilo decorativo"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Vinilo decorativo</h3>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="neón">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/aviso-neon.png" alt="Letrero de Neón"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Letrero de Neón</h3>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+                <!-- Item 6 -->
+                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
+                    <div class="aspect-w-4 aspect-h-3">
+                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
+                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div
+                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <h3 class="text-xl font-bold text-white">Material POP</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botón Ver más -->
+            <div class="text-center mt-12">
+                <button id="loadMore"
+                    class="inline-flex items-center px-8 py-3 bg-[#46C5C8] text-[#0F2435] rounded-xl font-medium hover:bg-[#2BAFB4] transition-colors duration-200">
+                    Ver más proyectos
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 bg-white text-[#0F2435]" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="section-title text-3xl font-bold mb-12">Contáctanos</h2>
+
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <div class="bg-[#0F2435] rounded-2xl p-8 md:p-12 border border-[#173447]">
+                        <h3 class="text-2xl font-bold text-white mb-6">Información de contacto</h3>
+
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <i data-feather="phone" class="text-[#46C5C8] w-6 h-6 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-[#AFC1CD] mb-1">WhatsApp</h4>
+                                    <a href="tel:+1234567890" class="text-white hover:underline"> 304 252 14 55</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <i data-feather="mail" class="text-[#46C5C8] w-6 h-6 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-[#AFC1CD] mb-1">Correo electrónico</h4>
+                                    <a href="mailto:info@360publicidad.com"
+                                        class="text-white hover:underline">360publicidad.bmc@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <i data-feather="map-pin" class="text-[#46C5C8] w-6 h-6 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-[#AFC1CD] mb-1">Dirección</h4>
+                                    <p class="text-white">Cl 100 # 17-134, Turbo, Colombia</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <i data-feather="clock" class="text-[#46C5C8] w-6 h-6 mr-4 mt-1"></i>
+                                <div>
+                                    <h4 class="text-lg font-medium text-[#AFC1CD] mb-1">Horario</h4>
+                                    <p class="text-white">Lunes a Viernes: 9:00 - 18:00</p>
+                                    <p class="text-white">Sábados: 9:00 - 13:00</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <h4 class="text-lg font-medium text-[#AFC1CD] mb-4">Síguenos</h4>
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-[#173447] flex items-center justify-center text-white hover:bg-[#46C5C8] transition-colors duration-200">
+                                    <i data-feather="facebook" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-[#173447] flex items-center justify-center text-white hover:bg-[#46C5C8] transition-colors duration-200">
+                                    <i data-feather="instagram" class="w-5 h-5"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 rounded-full bg-[#173447] flex items-center justify-center text-white hover:bg-[#46C5C8] transition-colors duration-200">
+                                    <i data-feather="linkedin" class="w-5 h-5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-lg font-medium mb-2">Nombre completo</label>
+                            <input type="text" id="name" name="name"
+                                class="w-full px-4 py-3 border border-[#173447] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#46C5C8] focus:border-transparent"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="email" class="block text-lg font-medium mb-2">Correo electrónico</label>
+                            <input type="email" id="email" name="email"
+                                class="w-full px-4 py-3 border border-[#173447] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#46C5C8] focus:border-transparent"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="phone" class="block text-lg font-medium mb-2">Teléfono (opcional)</label>
+                            <input type="tel" id="phone" name="phone"
+                                class="w-full px-4 py-3 border border-[#173447] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#46C5C8] focus:border-transparent">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-lg font-medium mb-2">Mensaje</label>
+                            <textarea id="message" name="message" rows="5"
+                                class="w-full px-4 py-3 border border-[#173447] rounded-xl focus:outline-none focus:ring-2 focus:ring-[#46C5C8] focus:border-transparent"
+                                required></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full px-8 py-4 bg-[#46C5C8] text-[#0F2435] rounded-xl font-bold hover:bg-[#2BAFB4] transition-colors duration-200">
+                            Enviar mensaje
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0F2435] border-t border-[#173447] py-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between gap-8">
+                <div class="md:w-1/2">
+                    <div class="flex items-center mb-6">
+                        <span class="text-2xl font-bold text-white">360</span>
+                        <span class="text-2xl font-bold text-[#46C5C8]">Publicidad</span>
+                    </div>
+                    <p class="text-[#AFC1CD] mb-6">Soluciones integrales de comunicación visual para empresas que buscan
+                        destacar en el mercado.</p>
+                    <p class="text-[#AFC1CD]">© 2023 360 Publicidad. Todos los derechos reservados.</p>
+                </div>
+
+                <div class="md:w-1/2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-4">Contacto rápido</h3>
+                            <ul class="space-y-2">
+                                <li class="flex items-center">
+                                    <i data-feather="phone" class="text-[#46C5C8] w-4 h-4 mr-2"></i>
+                                    <a href="tel:+1234567890" class="text-[#AFC1CD] hover:text-white">+1 234 567 890</a>
+                                </li>
+                                <li class="flex items-center">
+                                    <i data-feather="mail" class="text-[#46C5C8] w-4 h-4 mr-2"></i>
+                                    <a href="mailto:info@360publicidad.com"
+                                        class="text-[#AFC1CD] hover:text-white">info@360publicidad.com</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-lg font-bold text-white mb-4">Enlaces</h3>
+                            <ul class="space-y-2">
+                                <li><a href="#about" class="text-[#AFC1CD] hover:text-white">Quiénes Somos</a></li>
+                                <li><a href="#services" class="text-[#AFC1CD] hover:text-white">Servicios</a></li>
+                                <li><a href="#portfolio" class="text-[#AFC1CD] hover:text-white">Portafolio</a></li>
+                                <li><a href="#contact" class="text-[#AFC1CD] hover:text-white">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Botón flotante WhatsApp -->
+    <a href="https://wa.me/573001112233"
+        class="fixed bottom-6 right-6 bg-[#25D366] hover:bg-[#1ebe5c] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg z-50 transition-transform transform hover:scale-110"
+        target="_blank" aria-label="WhatsApp">
+        <i data-feather="message-circle" class="w-7 h-7"></i>
+    </a>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
