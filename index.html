@@ -339,192 +339,26 @@
         <div class="max-w-7xl mx-auto">
             <h2 class="section-title text-3xl font-bold mb-12 text-white">Portafolio de Productos</h2>
 
-            <!-- Filters -->
-            <div class="flex flex-wrap gap-3 mb-12">
-                <button class="px-4 py-2 bg-[#46C5C8] text-[#0F2435] rounded-full font-medium">Todos</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Avisos</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Neón</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Señalización</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Vinilos</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">POP</button>
-                <button
-                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Papelería</button>
+            <!-- Filters (now in a dedicated container to avoid selecting the 'Cargar más' button) -->
+            <div id="portfolio-filters" class="flex flex-wrap gap-3 mb-12">
+                <button data-filter="todos" class="px-4 py-2 bg-[#46C5C8] text-[#0F2435] rounded-full font-medium" aria-pressed="true">Todos</button>
+                <button data-filter="neón" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Neón</button>
+                <button data-filter="señalización" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Señalización</button>
+                <button data-filter="vinilos" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Vinilos</button>
+                <button data-filter="avisos" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Avisos</button>
+                <button data-filter="pop" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">POP</button>
+                <button data-filter="papelería comercial" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Papelería comercial</button>
+                <button data-filter="stands" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Stands</button>
             </div>
 
-            <!-- Gallery -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Item 1 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-luminosos-acrilico.png" alt="Aviso luminoso en acríclico"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Aviso luminoso en acrilico</h3>
-                    </div>
-                </div>
+            <!-- Gallery (rendered by JS for better performance and pagination) -->
+            <div id="portfolio-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6" aria-live="polite"></div>
 
-                <!-- Item 2 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-luminosos-acrilico (2).png" alt="Aviso luminoso en acrílico"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Aviso luminoso en acrilico</h3>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico.png" alt="Aviso en acrilico"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Aviso en acrilico</h3>
-                    </div>
-                </div>
-                <!-- Item 4 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="avisos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Aviso en acrílico"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Aviso en acrilico</h3>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="vinilos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/vinilo-decorativo.png" alt="Vinilo decorativo"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Vinilo decorativo</h3>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="vinilos">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/vinilo-decorativo (2).png" alt="Vinilo decorativo"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Vinilo decorativo</h3>
-                    </div>
-                </div>
-
-                <!-- Item 5 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="neón">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/aviso-neon.png" alt="Letrero de Neón"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Letrero de Neón</h3>
-                    </div>
-                </div>
-
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-                <!-- Item 6 -->
-                <div class="portfolio-item relative group overflow-hidden rounded-2xl" data-category="pop">
-                    <div class="aspect-w-4 aspect-h-3">
-                        <img src="media/avisos-en-acrilico (2).png" alt="Material POP"
-                            class="w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div
-                        class="absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-xl font-bold text-white">Material POP</h3>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Botón Ver más -->
+            <!-- Botón Cargar más -->
             <div class="text-center mt-12">
-                <button id="loadMore"
+                <button id="loadMore" type="button"
                     class="inline-flex items-center px-8 py-3 bg-[#46C5C8] text-[#0F2435] rounded-xl font-medium hover:bg-[#2BAFB4] transition-colors duration-200">
-                    Ver más proyectos
+                    Cargar más
                 </button>
             </div>
         </div>
