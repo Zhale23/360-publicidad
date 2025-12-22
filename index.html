@@ -164,11 +164,8 @@
 
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="lg:w-1/2">
-                    <p class="text-lg mb-6">En 360 Publicidad llevamos más de 15 años transformando ideas en
-                        experiencias visuales impactantes. Somos especialistas en comunicación visual integral para
-                        empresas que buscan destacar.</p>
-                    <p class="text-lg mb-8">Nuestro equipo multidisciplinario combina creatividad, tecnología y
-                        estrategia para ofrecer soluciones personalizadas que generan resultados medibles.</p>
+                    <p class="text-lg mb-6">En 360 Publicidad transformamos ideas en soluciones visuales que conectan y generan impacto. Contamos con más de 10 años de experiencia brindando comunicación visual integral a marcas que buscan destacar y posicionarse./p>
+                    <p class="text-lg mb-8">Somos un equipo creativo y estratégico que integra diseño, tecnología e innovación para ofrecer soluciones personalizadas, enfocadas en resultados reales y medibles.</p>
 
                     <ul class="space-y-4 mb-8">
                         <li class="flex items-start">
@@ -198,6 +195,89 @@
                             <i data-feather="image" class="w-20 h-20 text-white opacity-50"></i>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- 4 Botones / Category Showcase Section -->
+    <section id="showcase" class="py-24 px-6 bg-gradient-to-br from-[#46C5C8] via-[#2BAFB4] to-[#1a8a8e]"
+        data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold mb-4 text-white">Nuestros Servicios Destacados</h2>
+                <p class="text-lg text-white opacity-90 max-w-2xl mx-auto">Explora nuestros principales servicios y
+                    descubre el trabajo que hemos realizado</p>
+            </div>
+
+            <!-- 4 Main Category Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="ADECUACION DE ESPACIOS" aria-label="Ver galería de Adecuación de Espacios">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="home" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Adecuación de Espacios</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="LETREROS" aria-label="Ver galería de Letreros">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="type" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Letreros</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="STAND" aria-label="Ver galería de Stands">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="grid" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Stands</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="VALLAS" aria-label="Ver galería de Vallas">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="monitor"
+                            class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Vallas</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Gallery Container (hidden, shown in modal) -->
+            <div id="gallery-container"
+                class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center p-4 overflow-y-auto">
+                <div class="bg-white rounded-3xl max-w-4xl w-full p-8 relative">
+                    <!-- Close Button -->
+                    <button id="gallery-close"
+                        class="absolute top-6 right-6 text-[#0F2435] hover:text-[#46C5C8] transition-colors"
+                        aria-label="Cerrar galería">
+                        <i data-feather="x" class="w-8 h-8"></i>
+                    </button>
+
+                    <!-- Gallery Title -->
+                    <h3 id="gallery-title" class="text-3xl font-bold text-[#0F2435] mb-6"></h3>
+
+                    <!-- Gallery Grid -->
+                    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
                 </div>
             </div>
         </div>
@@ -334,88 +414,7 @@
         </div>
     </section>
 
-    <!-- 4 Botones / Category Showcase Section -->
-    <section id="showcase" class="py-24 px-6 bg-gradient-to-br from-[#46C5C8] via-[#2BAFB4] to-[#1a8a8e]"
-        data-aos="fade-up">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="section-title text-3xl font-bold mb-4 text-white">Nuestros Servicios Destacados</h2>
-                <p class="text-lg text-white opacity-90 max-w-2xl mx-auto">Explora nuestros principales servicios y
-                    descubre el trabajo que hemos realizado</p>
-            </div>
 
-            <!-- 4 Main Category Buttons -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                <button
-                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                    data-category="ADECUACION DE ESPACIOS" aria-label="Ver galería de Adecuación de Espacios">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
-                    </div>
-                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
-                        <i data-feather="home" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
-                        <span class="group-hover:text-white transition-colors">Adecuación de Espacios</span>
-                    </div>
-                </button>
-
-                <button
-                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                    data-category="LETREROS" aria-label="Ver galería de Letreros">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
-                    </div>
-                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
-                        <i data-feather="type" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
-                        <span class="group-hover:text-white transition-colors">Letreros</span>
-                    </div>
-                </button>
-
-                <button
-                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                    data-category="STAND" aria-label="Ver galería de Stands">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
-                    </div>
-                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
-                        <i data-feather="grid" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
-                        <span class="group-hover:text-white transition-colors">Stands</span>
-                    </div>
-                </button>
-
-                <button
-                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                    data-category="VALLAS" aria-label="Ver galería de Vallas">
-                    <div
-                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
-                    </div>
-                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
-                        <i data-feather="monitor"
-                            class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
-                        <span class="group-hover:text-white transition-colors">Vallas</span>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Gallery Container (hidden, shown in modal) -->
-            <div id="gallery-container"
-                class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center p-4 overflow-y-auto">
-                <div class="bg-white rounded-3xl max-w-4xl w-full p-8 relative">
-                    <!-- Close Button -->
-                    <button id="gallery-close"
-                        class="absolute top-6 right-6 text-[#0F2435] hover:text-[#46C5C8] transition-colors"
-                        aria-label="Cerrar galería">
-                        <i data-feather="x" class="w-8 h-8"></i>
-                    </button>
-
-                    <!-- Gallery Title -->
-                    <h3 id="gallery-title" class="text-3xl font-bold text-[#0F2435] mb-6"></h3>
-
-                    <!-- Gallery Grid -->
-                    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-24 px-6 bg-[#0F2435]" data-aos="fade-up">
