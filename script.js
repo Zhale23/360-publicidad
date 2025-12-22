@@ -145,12 +145,14 @@ heroCards.forEach((card) => {
 // Initialize feather icons
 feather.replace();
 
+const slidesCount = document.querySelectorAll('.hero-swiper .swiper-slide').length;
+const enableLoop = slidesCount >= 4; // evita warning de Swiper si hay pocas slides
 const swiper = new Swiper(".hero-swiper", {
   effect: "coverflow",
   centeredSlides: true,
-  loop: true,
+  loop: enableLoop,
   slidesPerView: "auto",
-  spaceBetween: 50,
+  spaceBetween: 40,
 
   coverflowEffect: {
     rotate: 0,
@@ -171,26 +173,26 @@ const swiper = new Swiper(".hero-swiper", {
 
 // --- 🔊 Manejar el sonido del video activo ---
 swiper.on("slideChangeTransitionEnd", () => {
-  // Primero muteamos todos los videos
+  // Mantener todos los videos en silencio para evitar bloqueos de autoplay
   document.querySelectorAll(".hero-swiper video").forEach((video) => {
     video.muted = true;
-    video.pause(); // opcional, si no quieres que sigan corriendo en silencio
   });
 
-  // Ahora obtenemos el slide activo
+  // Reproducir el video activo en silencio
   const activeSlide = swiper.slides[swiper.activeIndex];
-  const activeVideo = activeSlide.querySelector("video");
-
+  const activeVideo = activeSlide?.querySelector("video");
   if (activeVideo) {
-    activeVideo.muted = false;
+    activeVideo.muted = true;
     activeVideo.play().catch((err) => {
-      console.log("El navegador bloqueó el autoplay con sonido:", err);
+      console.log("Autoplay silenciado (permitido):", err);
     });
   }
 });
 // --- FILTRO PORTAFOLIO (versión dinámica y paginada) ---
 const filtersContainer = document.getElementById("portfolio-filters");
-const filterButtons = filtersContainer ? filtersContainer.querySelectorAll("button[data-filter]") : [];
+const filterButtons = filtersContainer
+  ? filtersContainer.querySelectorAll("button[data-filter]")
+  : [];
 const grid = document.getElementById("portfolio-grid");
 const loadMoreBtn = document.getElementById("loadMore");
 
@@ -198,36 +200,24 @@ const itemsPerPage = 8; // número de items por carga
 let currentPage = 1;
 let currentFilter = "todos";
 
-// Datos del portafolio (puedes ampliar/editar según los archivos en /media)
-const portfolioData = [
-  { src: "media/avisos-luminosos-acrilico.png", title: "Aviso luminoso en acrilico", category: "avisos" },
-  { src: "media/avisos-luminosos-acrilico (2).png", title: "Aviso luminoso en acrilico", category: "avisos" },
-  { src: "media/avisos-en-acrilico.png", title: "Aviso en acrilico", category: "avisos" },
-  { src: "media/avisos-en-acrilico (2).png", title: "Aviso en acrilico", category: "avisos" },
-  { src: "media/avisos-en-acrilico (3).png", title: "Aviso en acrilico", category: "avisos" },
-  { src: "media/vinilo-decorativo (2).png", title: "Vinilo decorativo", category: "vinilos" },
-  { src: "media/aviso-neon.png", title: "Letrero de Neón", category: "neón" },
-  { src: "media/m-POP.png", title: "Material POP", category: "pop" },
-  { src: "media/m-POP-2.png", title: "Material POP", category: "pop" },
-  { src: "media/m-POP-3.png", title: "Material POP", category: "pop" },
-  { src: "media/m-POP-4.png", title: "Material POP", category: "pop" },
-  { src: "media/m-POP-5.png", title: "Material POP", category: "pop" },
-  { src: "media/señal.png", title: "Señal en acrílico", category: "señalización" },
-  { src: "media/señal-3.png", title: "Señal en acrílico", category: "señalización" },
-  { src: "media/señal-2.png", title: "Señal en poliéster", category: "señalización" },
-  { src: "media/stand-custom.png", title: "Stand Custom", category: "stands" },
-  { src: "media/stand-custom (2).png", title: "Stand Custom", category: "stands" },
-  { src: "media/stand-modular.png", title: "Stand Modular", category: "stands" },
-  { src: "media/stand-portatil.png", title: "Stand Portatil", category: "stands" },
-  { src: "media/papeleria1.png", title: "Imantados", category: "papelería comercial" },
-  { src: "media/papeleria2.png", title: "Trípticos", category: "papelería comercial" },
-  { src: "media/papeleria3.png", title: "Volantes", category: "papelería comercial" },
-  { src: "media/papeleria4.png", title: "Manillas", category: "papelería comercial" },
-  { src: "media/papeleria5.png", title: "Stickers", category: "papelería comercial" },
-  { src: "media/papeleria6.png", title: "Abanicos", category: "papelería comercial" },
-  { src: "media/papeleria6 (2).png", title: "Tarjetas de presentacion", category: "papelería comercial" },
-  { src: "media/papeleria7.png", title: "Talonarios", category: "papelería comercial" }
-];
+// Datos del portafolio (cargados dinámicamente desde el servidor)
+let portfolioData = [];
+
+// Cargar datos del portafolio desde el servidor
+async function loadPortfolioData() {
+  try {
+    const response = await fetch("http://localhost:5000/api/portfolio");
+    if (response.ok) {
+      portfolioData = await response.json();
+      currentPage = 1;
+      renderGallery();
+    } else {
+      console.error("Error loading portfolio:", response.statusText);
+    }
+  } catch (error) {
+    console.error("Error loading portfolio:", error);
+  }
+}
 
 // Normaliza el texto para comparar filtros (quita tildes y mayúsculas)
 function normalizeKey(s) {
@@ -243,7 +233,10 @@ function renderGallery() {
 
   const normalizedFilter = normalizeKey(currentFilter);
   const filtered = portfolioData.filter((item) => {
-    return normalizedFilter === "todos" || normalizeKey(item.category) === normalizedFilter;
+    return (
+      normalizedFilter === "todos" ||
+      normalizeKey(item.category) === normalizedFilter
+    );
   });
 
   const start = (currentPage - 1) * itemsPerPage;
@@ -253,7 +246,8 @@ function renderGallery() {
   if (currentPage === 1) grid.innerHTML = "";
   pageItems.forEach((it) => {
     const wrapper = document.createElement("div");
-    wrapper.className = "portfolio-item relative group overflow-hidden rounded-2xl";
+    wrapper.className =
+      "portfolio-item relative group overflow-hidden rounded-2xl";
     wrapper.setAttribute("data-category", it.category);
 
     const aspect = document.createElement("div");
@@ -263,12 +257,14 @@ function renderGallery() {
     img.src = it.src;
     img.alt = it.title;
     img.loading = "lazy";
-    img.className = "w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110";
+    img.className =
+      "w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110";
 
     aspect.appendChild(img);
 
     const overlay = document.createElement("div");
-    overlay.className = "absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300";
+    overlay.className =
+      "absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300";
     overlay.innerHTML = `<h3 class="text-xl font-bold text-white">${it.title}</h3>`;
 
     wrapper.appendChild(aspect);
@@ -316,5 +312,213 @@ if (loadMoreBtn) {
   });
 }
 
-// Inicializar
-renderGallery();
+// Inicializar - Cargar portafolio desde servidor
+loadPortfolioData();
+
+// =============================
+// 4 BOTONES / SHOWCASE SECTION
+// =============================
+
+// Mapeo de categorías a carpetas en /media
+const showcaseCategories = {
+  "ADECUACION DE ESPACIOS": "4 BOTONES/ADECUACION DE ESPACIOS",
+  LETREROS: "4 BOTONES/LETREROS",
+  STAND: "4 BOTONES/STAND",
+  VALLAS: "4 BOTONES/VALLAS",
+};
+
+// Almacenar imágenes cargadas por categoría (caché)
+const galleryCache = {};
+
+// Función para obtener imágenes de una categoría
+async function fetchCategoryImages(category) {
+  if (galleryCache[category]) {
+    return galleryCache[category];
+  }
+
+  try {
+    const response = await fetch(
+      `http://localhost:5000/api/gallery/${encodeURIComponent(category)}`
+    );
+    if (!response.ok) {
+      throw new Error(`Error fetching images for ${category}`);
+    }
+    const images = await response.json();
+    galleryCache[category] = images;
+    return images;
+  } catch (error) {
+    console.error("Error fetching category images:", error);
+    return [];
+  }
+}
+
+// Función para abrir la galería modal
+async function openGallery(categoryPath) {
+  const galleryContainer = document.getElementById("gallery-container");
+  const galleryTitle = document.getElementById("gallery-title");
+  const galleryGrid = document.getElementById("gallery-grid");
+
+  // Mostrar título (extraer el nombre de la carpeta final)
+  const displayName = categoryPath.split("/").pop().replace(/_/g, " ");
+  galleryTitle.textContent = displayName;
+
+  // Mostrar loading mientras se cargan las imágenes
+  galleryGrid.innerHTML =
+    '<div class="col-span-full text-center py-8 text-[#0F2435]">Cargando galería...</div>';
+  galleryContainer.classList.remove("hidden");
+
+  // Fetch imágenes
+  const images = await fetchCategoryImages(categoryPath);
+
+  if (images.length === 0) {
+    galleryGrid.innerHTML =
+      '<div class="col-span-full text-center py-8 text-[#0F2435]">No hay imágenes disponibles en esta categoría.</div>';
+    return;
+  }
+
+  // Renderizar imágenes
+  galleryGrid.innerHTML = "";
+  images.forEach((imagePath) => {
+    const wrapper = document.createElement("div");
+    wrapper.className =
+      "gallery-item relative group overflow-hidden rounded-xl aspect-square";
+
+    const img = document.createElement("img");
+    img.src = imagePath;
+    img.alt = "Gallery image";
+    img.loading = "lazy";
+    img.className =
+      "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer";
+
+    // Lightbox al hacer click
+    img.addEventListener("click", () => openLightbox(imagePath));
+
+    const overlay = document.createElement("div");
+    overlay.className =
+      "absolute inset-0 bg-[#0F2435]/0 group-hover:bg-[#0F2435]/50 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100";
+    overlay.innerHTML =
+      '<i data-feather="maximize-2" class="w-8 h-8 text-white"></i>';
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(overlay);
+    galleryGrid.appendChild(wrapper);
+  });
+
+  // Re-inicializar Feather icons
+  feather.replace();
+}
+
+// Función para abrir lightbox de imagen
+function openLightbox(imagePath) {
+  const lightbox = document.createElement("div");
+  lightbox.className =
+    "fixed inset-0 z-[60] bg-black bg-opacity-90 flex items-center justify-center p-4 animate-fade-in";
+  lightbox.innerHTML = `
+    <div class="relative max-w-4xl max-h-screen">
+      <img src="${imagePath}" alt="Lightbox image" class="w-full h-auto rounded-xl">
+      <button class="absolute top-4 right-4 text-white hover:text-[#46C5C8] transition-colors" id="close-lightbox">
+        <i data-feather="x" class="w-8 h-8"></i>
+      </button>
+    </div>
+  `;
+  document.body.appendChild(lightbox);
+  feather.replace();
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox || e.target.closest("#close-lightbox")) {
+      lightbox.remove();
+    }
+  });
+}
+
+// Botones de categoría
+document.querySelectorAll(".category-btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const categoryKey = btn.dataset.category;
+    const categoryPath = showcaseCategories[categoryKey];
+    openGallery(categoryPath);
+  });
+});
+
+// Cerrar galería modal
+const galleryClose = document.getElementById("gallery-close");
+if (galleryClose) {
+  galleryClose.addEventListener("click", () => {
+    document.getElementById("gallery-container").classList.add("hidden");
+  });
+}
+
+// Cerrar galería al hacer click fuera
+document.getElementById("gallery-container")?.addEventListener("click", (e) => {
+  if (e.target.id === "gallery-container") {
+    document.getElementById("gallery-container").classList.add("hidden");
+  }
+});
+
+// Cerrar galería con ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const galleryContainer = document.getElementById("gallery-container");
+    if (galleryContainer && !galleryContainer.classList.contains("hidden")) {
+      galleryContainer.classList.add("hidden");
+    }
+  }
+});
+
+// =============================
+// Envío del formulario de contacto
+// =============================
+const contactForm = document.getElementById("contact-form");
+if (contactForm) {
+  contactForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const name = document.getElementById("name")?.value?.trim();
+    const email = document.getElementById("email")?.value?.trim();
+    const phone = document.getElementById("phone")?.value?.trim();
+    const message = document.getElementById("message")?.value?.trim();
+
+    if (!name || !email || !message) {
+      alert(
+        "Por favor completa los campos requeridos: Nombre, Correo y Mensaje."
+      );
+      return;
+    }
+
+    const payload = { name, email, phone, message };
+
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.classList.add("opacity-60");
+    }
+
+    try {
+      const resp = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        const serverMsg = err.details || err.error || err.message;
+        throw new Error(serverMsg || "Error enviando el formulario");
+      }
+
+      const data = await resp.json();
+      alert(data.message || "Mensaje enviado correctamente.");
+      contactForm.reset();
+    } catch (err) {
+      console.error("Contact form error:", err);
+      alert(
+        "Ocurrió un error al enviar el mensaje. Revisa la consola o intenta más tarde."
+      );
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove("opacity-60");
+      }
+    }
+  });
+}

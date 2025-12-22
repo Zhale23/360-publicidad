@@ -334,6 +334,89 @@
         </div>
     </section>
 
+    <!-- 4 Botones / Category Showcase Section -->
+    <section id="showcase" class="py-24 px-6 bg-gradient-to-br from-[#46C5C8] via-[#2BAFB4] to-[#1a8a8e]"
+        data-aos="fade-up">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="section-title text-3xl font-bold mb-4 text-white">Nuestros Servicios Destacados</h2>
+                <p class="text-lg text-white opacity-90 max-w-2xl mx-auto">Explora nuestros principales servicios y
+                    descubre el trabajo que hemos realizado</p>
+            </div>
+
+            <!-- 4 Main Category Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="ADECUACION DE ESPACIOS" aria-label="Ver galería de Adecuación de Espacios">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="home" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Adecuación de Espacios</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="LETREROS" aria-label="Ver galería de Letreros">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="type" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Letreros</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="STAND" aria-label="Ver galería de Stands">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="grid" class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Stands</span>
+                    </div>
+                </button>
+
+                <button
+                    class="category-btn group relative overflow-hidden rounded-2xl p-8 bg-white text-[#0F2435] font-bold text-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
+                    data-category="VALLAS" aria-label="Ver galería de Vallas">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-[#0F2435] to-[#173447] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left">
+                    </div>
+                    <div class="relative z-10 flex flex-col items-center justify-center h-full">
+                        <i data-feather="monitor"
+                            class="w-12 h-12 mb-4 group-hover:text-[#46C5C8] transition-colors"></i>
+                        <span class="group-hover:text-white transition-colors">Vallas</span>
+                    </div>
+                </button>
+            </div>
+
+            <!-- Gallery Container (hidden, shown in modal) -->
+            <div id="gallery-container"
+                class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center p-4 overflow-y-auto">
+                <div class="bg-white rounded-3xl max-w-4xl w-full p-8 relative">
+                    <!-- Close Button -->
+                    <button id="gallery-close"
+                        class="absolute top-6 right-6 text-[#0F2435] hover:text-[#46C5C8] transition-colors"
+                        aria-label="Cerrar galería">
+                        <i data-feather="x" class="w-8 h-8"></i>
+                    </button>
+
+                    <!-- Gallery Title -->
+                    <h3 id="gallery-title" class="text-3xl font-bold text-[#0F2435] mb-6"></h3>
+
+                    <!-- Gallery Grid -->
+                    <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Portfolio Section -->
     <section id="portfolio" class="py-24 px-6 bg-[#0F2435]" data-aos="fade-up">
         <div class="max-w-7xl mx-auto">
@@ -341,18 +424,29 @@
 
             <!-- Filters (now in a dedicated container to avoid selecting the 'Cargar más' button) -->
             <div id="portfolio-filters" class="flex flex-wrap gap-3 mb-12">
-                <button data-filter="todos" class="px-4 py-2 bg-[#46C5C8] text-[#0F2435] rounded-full font-medium" aria-pressed="true">Todos</button>
-                <button data-filter="neón" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Neón</button>
-                <button data-filter="señalización" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Señalización</button>
-                <button data-filter="vinilos" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Vinilos</button>
-                <button data-filter="avisos" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Avisos</button>
-                <button data-filter="pop" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">POP</button>
-                <button data-filter="papelería comercial" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Papelería comercial</button>
-                <button data-filter="stands" class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Stands</button>
+                <button data-filter="todos" class="px-4 py-2 bg-[#46C5C8] text-[#0F2435] rounded-full font-medium"
+                    aria-pressed="true">Todos</button>
+                <button data-filter="neón"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Neón</button>
+                <button data-filter="señalización"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Señalización</button>
+                <button data-filter="vinilos"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Vinilos</button>
+                <button data-filter="avisos"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Avisos</button>
+                <button data-filter="pop"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">POP</button>
+                <button data-filter="papelería"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Papelería</button>
+                <button data-filter="wrap"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Wrap</button>
+                <button data-filter="reconocimientos"
+                    class="px-4 py-2 bg-[#173447] text-white rounded-full font-medium hover:bg-[#46C5C8] hover:text-[#0F2435] transition-colors duration-200">Reconocimientos</button>
             </div>
 
             <!-- Gallery (rendered by JS for better performance and pagination) -->
-            <div id="portfolio-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6" aria-live="polite"></div>
+            <div id="portfolio-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6" aria-live="polite">
+            </div>
 
             <!-- Botón Cargar más -->
             <div class="text-center mt-12">
@@ -432,7 +526,7 @@
                 </div>
 
                 <div class="lg:w-1/2">
-                    <form class="space-y-6">
+                    <form id="contact-form" class="space-y-6" novalidate>
                         <div>
                             <label for="name" class="block text-lg font-medium mb-2">Nombre completo</label>
                             <input type="text" id="name" name="name"
