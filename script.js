@@ -145,7 +145,9 @@ heroCards.forEach((card) => {
 // Initialize feather icons
 feather.replace();
 
-const slidesCount = document.querySelectorAll('.hero-swiper .swiper-slide').length;
+const slidesCount = document.querySelectorAll(
+  ".hero-swiper .swiper-slide"
+).length;
 const enableLoop = slidesCount >= 4; // evita warning de Swiper si hay pocas slides
 const swiper = new Swiper(".hero-swiper", {
   effect: "coverflow",
@@ -200,22 +202,36 @@ const itemsPerPage = 8; // número de items por carga
 let currentPage = 1;
 let currentFilter = "todos";
 
-// Datos del portafolio (cargados dinámicamente desde el servidor)
+// Datos del portafolio (cargados desde images.json)
 let portfolioData = [];
+let imagesData = null;
 
-// Cargar datos del portafolio desde el servidor
+// Cargar datos del portafolio desde images.json
 async function loadPortfolioData() {
   try {
-    const response = await fetch("http://localhost:5000/api/portfolio");
+    const response = await fetch("images.json");
     if (response.ok) {
-      portfolioData = await response.json();
+      imagesData = await response.json();
+
+      // Convertir el formato del JSON a portfolioData
+      portfolioData = [];
+      Object.entries(imagesData.portfolio).forEach(([category, images]) => {
+        images.forEach((imgPath) => {
+          portfolioData.push({
+            src: imgPath,
+            title: category,
+            category: category.toLowerCase(),
+          });
+        });
+      });
+
       currentPage = 1;
       renderGallery();
     } else {
-      console.error("Error loading portfolio:", response.statusText);
+      console.error("Error loading images.json:", response.statusText);
     }
   } catch (error) {
-    console.error("Error loading portfolio:", error);
+    console.error("Error loading images.json:", error);
   }
 }
 
@@ -250,9 +266,6 @@ function renderGallery() {
       "portfolio-item relative group overflow-hidden rounded-2xl";
     wrapper.setAttribute("data-category", it.category);
 
-    const aspect = document.createElement("div");
-    aspect.className = "aspect-w-4 aspect-h-3";
-
     const img = document.createElement("img");
     img.src = it.src;
     img.alt = it.title;
@@ -260,14 +273,12 @@ function renderGallery() {
     img.className =
       "w-full h-full object-cover rounded-2xl transition-transform duration-500 group-hover:scale-110";
 
-    aspect.appendChild(img);
-
     const overlay = document.createElement("div");
     overlay.className =
       "absolute inset-0 bg-[#0F2435]/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300";
     overlay.innerHTML = `<h3 class="text-xl font-bold text-white">${it.title}</h3>`;
 
-    wrapper.appendChild(aspect);
+    wrapper.appendChild(img);
     wrapper.appendChild(overlay);
     grid.appendChild(wrapper);
   });
@@ -330,20 +341,27 @@ const showcaseCategories = {
 // Almacenar imágenes cargadas por categoría (caché)
 const galleryCache = {};
 
-// Función para obtener imágenes de una categoría
+// Función para obtener imágenes de una categoría desde images.json
 async function fetchCategoryImages(category) {
   if (galleryCache[category]) {
     return galleryCache[category];
   }
 
   try {
-    const response = await fetch(
-      `http://localhost:5000/api/gallery/${encodeURIComponent(category)}`
-    );
-    if (!response.ok) {
-      throw new Error(`Error fetching images for ${category}`);
+    // Si no tenemos los datos cargados, cargarlos
+    if (!imagesData) {
+      const response = await fetch("images.json");
+      if (response.ok) {
+        imagesData = await response.json();
+      } else {
+        throw new Error("No se pudo cargar images.json");
+      }
     }
-    const images = await response.json();
+
+    // Buscar en showcase (4 botones)
+    const categoryKey = category.split("/").pop(); // Extraer nombre final
+    const images = imagesData.showcase[categoryKey] || [];
+
     galleryCache[category] = images;
     return images;
   } catch (error) {
@@ -381,17 +399,17 @@ async function openGallery(categoryPath) {
   images.forEach((imagePath) => {
     const wrapper = document.createElement("div");
     wrapper.className =
-      "gallery-item relative group overflow-hidden rounded-xl aspect-square";
+      "gallery-item relative group overflow-hidden rounded-xl aspect-square cursor-pointer";
 
     const img = document.createElement("img");
     img.src = imagePath;
     img.alt = "Gallery image";
     img.loading = "lazy";
     img.className =
-      "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 cursor-pointer";
+      "w-full h-full object-cover transition-transform duration-500 group-hover:scale-110";
 
     // Lightbox al hacer click
-    img.addEventListener("click", () => openLightbox(imagePath));
+    wrapper.addEventListener("click", () => openImageLightbox(imagePath));
 
     const overlay = document.createElement("div");
     overlay.className =
@@ -409,14 +427,14 @@ async function openGallery(categoryPath) {
 }
 
 // Función para abrir lightbox de imagen
-function openLightbox(imagePath) {
+function openImageLightbox(imagePath) {
   const lightbox = document.createElement("div");
   lightbox.className =
     "fixed inset-0 z-[60] bg-black bg-opacity-90 flex items-center justify-center p-4 animate-fade-in";
   lightbox.innerHTML = `
-    <div class="relative max-w-4xl max-h-screen">
-      <img src="${imagePath}" alt="Lightbox image" class="w-full h-auto rounded-xl">
-      <button class="absolute top-4 right-4 text-white hover:text-[#46C5C8] transition-colors" id="close-lightbox">
+    <div class="relative max-w-4xl max-h-[90vh] flex items-center justify-center">
+      <img src="${imagePath}" alt="Lightbox image" class="max-w-full max-h-[90vh] object-contain rounded-xl">
+      <button class="absolute top-2 right-2 text-white hover:text-[#46C5C8] transition-colors z-[70]" id="close-lightbox">
         <i data-feather="x" class="w-8 h-8"></i>
       </button>
     </div>
@@ -494,7 +512,7 @@ if (contactForm) {
     }
 
     try {
-      const resp = await fetch("http://localhost:5000/api/contact", {
+      const resp = await fetch("/api/contact.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
