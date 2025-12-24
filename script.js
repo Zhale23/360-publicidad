@@ -209,7 +209,7 @@ let imagesData = null;
 // Cargar datos del portafolio desde images.json
 async function loadPortfolioData() {
   try {
-    const response = await fetch("images.json");
+    const response = await fetch("/images.json");
     if (response.ok) {
       imagesData = await response.json();
 
@@ -350,7 +350,7 @@ async function fetchCategoryImages(category) {
   try {
     // Si no tenemos los datos cargados, cargarlos
     if (!imagesData) {
-      const response = await fetch("images.json");
+      const response = await fetch("/images.json");
       if (response.ok) {
         imagesData = await response.json();
       } else {
