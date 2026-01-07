@@ -174,22 +174,58 @@ const swiper = new Swiper(".hero-swiper", {
 });
 
 // --- 🔊 Manejar el sonido del video activo ---
+let isMuted = true; // Estado global del sonido
+
 swiper.on("slideChangeTransitionEnd", () => {
-  // Mantener todos los videos en silencio para evitar bloqueos de autoplay
+  // Aplicar el estado de mute a todos los videos
   document.querySelectorAll(".hero-swiper video").forEach((video) => {
-    video.muted = true;
+    video.muted = isMuted;
   });
 
-  // Reproducir el video activo en silencio
+  // Reproducir el video activo
   const activeSlide = swiper.slides[swiper.activeIndex];
   const activeVideo = activeSlide?.querySelector("video");
   if (activeVideo) {
-    activeVideo.muted = true;
+    activeVideo.muted = isMuted;
     activeVideo.play().catch((err) => {
-      console.log("Autoplay silenciado (permitido):", err);
+      console.log("Autoplay:", err);
     });
   }
 });
+
+// Botón de control de sonido
+const soundToggle = document.getElementById("sound-toggle");
+const soundIcon = document.getElementById("sound-icon");
+
+if (soundToggle && soundIcon) {
+  soundToggle.addEventListener("click", () => {
+    isMuted = !isMuted;
+
+    // Actualizar todos los videos
+    document.querySelectorAll(".hero-swiper video").forEach((video) => {
+      video.muted = isMuted;
+    });
+
+    // Actualizar SVG del icono (cambiar entre volume-x y volume-2)
+    if (isMuted) {
+      soundIcon.innerHTML = `
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <line x1="23" y1="9" x2="17" y2="15"></line>
+        <line x1="17" y1="9" x2="23" y2="15"></line>
+      `;
+    } else {
+      soundIcon.innerHTML = `
+        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      `;
+    }
+
+    // Feedback visual
+    soundToggle.classList.toggle("ring-4");
+    soundToggle.classList.toggle("ring-[#0F2435]");
+  });
+}
+
 // --- FILTRO PORTAFOLIO (versión dinámica y paginada) ---
 const filtersContainer = document.getElementById("portfolio-filters");
 const filterButtons = filtersContainer
