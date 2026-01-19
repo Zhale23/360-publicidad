@@ -146,7 +146,7 @@ heroCards.forEach((card) => {
 feather.replace();
 
 const slidesCount = document.querySelectorAll(
-  ".hero-swiper .swiper-slide"
+  ".hero-swiper .swiper-slide",
 ).length;
 const enableLoop = slidesCount >= 4; // evita warning de Swiper si hay pocas slides
 const swiper = new Swiper(".hero-swiper", {
@@ -176,22 +176,28 @@ const swiper = new Swiper(".hero-swiper", {
 // --- 🔊 Manejar el sonido del video activo ---
 let isMuted = true; // Estado global del sonido
 
-swiper.on("slideChangeTransitionEnd", () => {
-  // Aplicar el estado de mute a todos los videos
-  document.querySelectorAll(".hero-swiper video").forEach((video) => {
-    video.muted = isMuted;
-  });
-
-  // Reproducir el video activo
+function syncHeroVideos() {
+  const videos = document.querySelectorAll(".hero-swiper video");
   const activeSlide = swiper.slides[swiper.activeIndex];
   const activeVideo = activeSlide?.querySelector("video");
+
+  videos.forEach((video) => {
+    const isActive = video === activeVideo;
+    // Solo el activo se desmutea; los demás quedan mute y pausados
+    video.muted = isMuted || !isActive;
+    if (!isActive) {
+      video.pause();
+    }
+  });
+
   if (activeVideo) {
-    activeVideo.muted = isMuted;
     activeVideo.play().catch((err) => {
       console.log("Autoplay:", err);
     });
   }
-});
+}
+
+swiper.on("slideChangeTransitionEnd", syncHeroVideos);
 
 // Botón de control de sonido
 const soundToggle = document.getElementById("sound-toggle");
@@ -201,10 +207,8 @@ if (soundToggle && soundIcon) {
   soundToggle.addEventListener("click", () => {
     isMuted = !isMuted;
 
-    // Actualizar todos los videos
-    document.querySelectorAll(".hero-swiper video").forEach((video) => {
-      video.muted = isMuted;
-    });
+    // Actualizar solo el slide activo y mutear el resto
+    syncHeroVideos();
 
     // Actualizar SVG del icono (cambiar entre volume-x y volume-2)
     if (isMuted) {
@@ -225,6 +229,9 @@ if (soundToggle && soundIcon) {
     soundToggle.classList.toggle("ring-[#0F2435]");
   });
 }
+
+// Sincronizar al cargar
+syncHeroVideos();
 
 // --- FILTRO PORTAFOLIO (versión dinámica y paginada) ---
 const filtersContainer = document.getElementById("portfolio-filters");
@@ -535,7 +542,7 @@ if (contactForm) {
 
     if (!name || !email || !message) {
       alert(
-        "Por favor completa los campos requeridos: Nombre, Correo y Mensaje."
+        "Por favor completa los campos requeridos: Nombre, Correo y Mensaje.",
       );
       return;
     }
@@ -566,7 +573,7 @@ if (contactForm) {
     } catch (err) {
       console.error("Contact form error:", err);
       alert(
-        "Ocurrió un error al enviar el mensaje. Revisa la consola o intenta más tarde."
+        "Ocurrió un error al enviar el mensaje. Revisa la consola o intenta más tarde.",
       );
     } finally {
       if (submitBtn) {
