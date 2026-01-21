@@ -376,7 +376,7 @@ loadPortfolioData();
 // Mapeo de categorías a carpetas en /media
 const showcaseCategories = {
   "ADECUACION DE ESPACIOS": "4 BOTONES/ADECUACION DE ESPACIOS",
-  LETREROS: "4 BOTONES/LETREROS",
+  AVISOS: "4 BOTONES/AVISOS",
   STAND: "4 BOTONES/STAND",
   VALLAS: "4 BOTONES/VALLAS",
 };
